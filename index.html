@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serwis Pogodowy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="nav-bar"></div>
+    <div class="container">
+        <h1>Prognoza pogody</h1>
+        <div class="form">
+            <label for="city">Nazwa miasta:</label>
+            <input type="text" id="city" placeholder="Wprowadź miasto">
+            <button id="getWeather">Pobierz pogodę</button>
+        </div>
+        <div class="buttons">
+            <button id="weekWeather">Pogoda tydzień</button>
+            <button id="todayWeather">Pogoda dzień</button>
+        </div>
+        <div id="weatherChart"></div>
+        <div id="rainChart" style="width: 100%; height: 300px;"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="js/temperature.js"></script>
+    <script src="js/rainChart.js"></script>
+    <script src="js/nav-bar.js"></script>
+</body>
+</html>
