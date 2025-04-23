@@ -25,13 +25,13 @@ function updateRainChart(labels, data, xAxisTitle, markLines = [], showMarkLines
         }]
     };
 
-    if (showMarkLines) {
+    if (showMarkLines && markLines.length > 0) {
         option.series[0].markLine = {
             silent: true,
             symbol: "none",
             lineStyle: { type: "dashed", color: "red" },
             label: { show: false },
-            data: [...markLines.map(index => ({ xAxis: index })), { xAxis: labels.length - 1 }]
+            data: markLines.map(index => ({ xAxis: index }))
         };
     }
 
@@ -47,7 +47,7 @@ async function fetchTodayRainData(city) {
     const labels = data.hourly.time.slice(currentHour, currentHour + 24).map(t => parseInt(t.slice(11, 13), 10));
     const precipitation = data.hourly.precipitation.slice(currentHour, currentHour + 24);
 
-    updateRainChart(labels, precipitation, "Godzina");
+    updateRainChart(labels, precipitation, "Godzina", [], false);
 }
 
 // Pobieranie danych o opadach na tydzień
@@ -73,7 +73,7 @@ async function fetchWeekRainData(city) {
         } else if (index === filteredPrecipitation.length - 1) {
             return (filteredPrecipitation[index - 1] + 2 * filteredPrecipitation[index]) / 4;
         } else {
-            return (filteredPrecipitation[index - 1] + filteredPrecipitation[index] + filteredPrecipitation[index + 1]) / 3;
+            return (filteredPrecipitation[index - 1] + 2 * filteredPrecipitation[index] + filteredPrecipitation[index + 1]) / 4;
         }
     });
 
@@ -83,10 +83,10 @@ async function fetchWeekRainData(city) {
         return date.getHours() === 12 ? daysOfWeek[date.getDay()] : "";
     });
 
-    const markLines = filteredTimes.map((time, index) => {
+    const markLines = [0, ...filteredTimes.map((time, index) => {
         const date = new Date(time);
         return date.getHours() === 0 ? index : null;
-    }).filter(index => index !== null);
+    }).filter(index => index !== null), labels.length - 1];
 
     updateRainChart(labels, smoothedPrecipitation, "Dni", markLines, true);
 }

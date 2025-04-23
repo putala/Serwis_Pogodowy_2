@@ -72,6 +72,11 @@ button:hover {
     height: 500px;
 }
 
+#rainChart {
+    width: 100%; 
+    height: 400px;
+}
+
 .nav-bar {
     background-color: #1e1e1e;
     padding: 15px 20px;
@@ -106,3 +111,58 @@ button:hover {
     width: 100%;
     height: 800px;
 }
+
+/* Stylowanie formularza kontaktowego */
+.contact-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1e1e1e;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+
+

@@ -11,10 +11,27 @@
     <div class="nav-bar"></div>
     <div class="container">
         <h1>Opady</h1>
-        <div id="rainMap" style="height: 500px;"></div>
+        <div id="rainMap"></div>
+        <input type="range" id="timeSlider" min="0" max="167" value="0" step="1" style="width: 100%;">
+        <p id="selectedTime">Dzień 1, Godzina: 00:00</p>
     </div>
     <script src="js/nav-bar.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="js/rainfall.js"></script>
+    <script>
+        document.getElementById("timeSlider").addEventListener("input", function () {
+            const totalHours = parseInt(this.value, 10);
+            const day = Math.floor(totalHours / 24) + 1;
+            const hour = totalHours % 24;
+            const formattedHour = hour.toString().padStart(2, '0');
+            document.getElementById("selectedTime").textContent = `Dzień ${day}, Godzina: ${formattedHour}:00`;
+            updateRainfallForHour(day, formattedHour);
+        });
+
+        function updateRainfallForHour(day, hour) {
+            console.log(`Aktualizacja danych dla dnia ${day}, godziny: ${hour}:00`);
+            // Tutaj można dodać logikę aktualizacji danych na mapie według dnia i godziny
+        }
+    </script>
 </body>
 </html>

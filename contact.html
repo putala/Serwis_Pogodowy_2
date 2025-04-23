@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serwis Pogodowy</title>
+    <title>Serwis Pogodowy - Kontakt</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="nav-bar"></div>
     <div class="container">
         <h1>Kontakt</h1>
+        <form action="submit_form.php" method="POST" class="contact-form">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Adres e-mail:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit">Wyślij</button>
+        </form>
     </div>
     <script src="js/nav-bar.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
